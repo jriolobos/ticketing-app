@@ -1,0 +1,84 @@
+<div class="paddRow contactRow" data-ng-init="getTicket()">
+  <h4>Detalle incidencia</h4>
+
+  <form novalidate="novalidate" class="form-horizontal">
+    <div class="control-group">
+      <label class="control-label" for="inputSummary">Proyecto: {{valueSelect(ticket.project,projects)}}</label>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSummary">Resumen:</label>
+
+      <div class="controls">
+        <textarea type="text" style="width: 240px;" id="inputSummary" ng-model="ticket.summary" placeholder="Summary"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Texto descriptivo:</label>
+
+      <div class="controls">
+		<textarea wysiwyg ng-model="ticket.description" cols="18" required></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Prioridad:</label>
+
+      <div class="controls">
+		<select class="Sitedropdown" style="width: 220px;" 
+				ng-model="ticket.level" 
+				ng-options="level.id as level.name for level in levels"> 
+		</select> 
+	  </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Estado de la incidencia:</label>
+
+      <div class="controls">
+		<select class="Sitedropdown" style="width: 220px;" 
+				ng-change="setStatus(ticket.status)"
+				ng-model="ticket.status" 
+				ng-options="status.id as status.name for status in statuses"> 
+		</select> 
+	  </div>
+    </div>
+
+    <div class="control-group" ng-show="status">
+      <label class="control-label" for="inputSummary">Comentario al cambio de estado:</label>
+
+      <div class="controls">
+        <textarea type="text" style="width: 300px;" id="inputComment" ng-model="ticket.comment" placeholder="Comentario"/>
+      </div>
+    </div>
+	<hr />
+    <div class="control-group">
+      <div class="controls">
+        <a ng-click="cancel()" class="btn btn-small btn-danger">volver</a>
+        <a ng-click="updateTicket()" class="btn btn-small btn-primary">actualizar ticket</a>
+      </div>
+    </div>
+  </form>
+  
+  <hr />
+  
+  <div ng-show="ticket.log">
+  <h4>Histórico incidencia</h4>
+
+  <table class="table table-striped table-condensed">
+    <thead>
+      <tr>
+        <th style="min-width: 60px;">Estado</th>
+        <th style="min-width: 60px;">Comentario</th>
+        <th style="min-width: 60px;">Autor</th>
+        <th style="min-width: 60px;">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="log in ticket.log">
+        <td>{{ valueSelect(log.status, statuses) }}</td>
+        <td>{{ log.comment }}</td>
+        <td>{{ log.user.username }}</td>
+        <td>{{ formatDate(log.date) |  date:"dd/MM/yyyy hh:mm" }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>  
+</div>

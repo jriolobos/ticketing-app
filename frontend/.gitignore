@@ -1,0 +1,7 @@
+node_modules
+test_reports
+dist
+.tmp
+.sass-cache
+app/bower_components
+angularjs_frontend.sublime-project

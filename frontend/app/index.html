@@ -1,0 +1,134 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Gestión de incidencias</title>
+  <meta name="description" content="">
+  <!-- meta name="viewport" content="width=device-width" -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+
+<body ng-app="ticketingApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+      <![endif]-->
+	<header class="paddRow contactRow">
+		<table cellpadding="10" ng-show="currentUser">
+			<tr>
+				<td>
+					<strong>Bienvenido {{currentUser.get('username')}}</strong>
+				</td>
+				<td>
+					<button ng-click="logOut()" class="btn btn-small btn-danger">salir</button>
+				</td>
+			</tr>
+		</table>
+	</header>
+	<div class="form-box">
+		<form ng-hide="currentUser">
+			<hr />
+			<h2>Inicia sesión</h2>
+			<table>
+				<tr>
+					<td>
+						Usuario: 
+					</td>
+					<td>
+						<input type="text" ng-model="user.username"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Contraseña: 
+					</td>
+					<td>
+						<input type="password" ng-model="user.password" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<button ng-click="logIn(user)" class="btn btn-small btn-primary" style="float:right">acceder</button>
+					</td>
+				</tr>
+			</table>
+				<div ng-show="loginMessage">
+						{{loginMessage}}
+				</div>
+			
+		<hr />
+		</form>
+	</div>
+ 
+      <!-- Add your site or application content here -->
+      <div ng-view="/#/ticket-list" ng-show="currentUser">
+	  </div>
+
+      <script src="bower_components/jquery/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+
+      <!-- build:js scripts/plugins.js -->
+      <script src="bower_components/sass-bootstrap/js/affix.js"></script>
+      <script src="bower_components/sass-bootstrap/js/alert.js"></script>
+      <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
+      <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
+      <script src="bower_components/sass-bootstrap/js/modal.js"></script>
+      <script src="bower_components/sass-bootstrap/js/transition.js"></script>
+      <script src="bower_components/sass-bootstrap/js/button.js"></script>
+      <script src="bower_components/sass-bootstrap/js/popover.js"></script>
+      <script src="bower_components/sass-bootstrap/js/typeahead.js"></script>
+      <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
+      <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
+      <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
+      <script src="bower_components/sass-bootstrap/js/tab.js"></script>
+      <!-- endbuild -->
+
+      <!-- build:js scripts/modules.js -->
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <!-- endbuild -->
+
+	  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+	    <script type="text/javascript">
+		
+			<!-- Claves para inicializar el acceso al modelo REST de usuarios en la nube -->
+			Parse.initialize("mEnuY43HG8Drxk660TpNe318xuPPdWQYyE0qfCDF", "crpy9P0IJDc3eyhBk5nQuUfeuO3bZ4YW2vTUWTRS");    
+			
+			var TestObject = Parse.Object.extend("TestObject");
+			var testObject = new TestObject();
+			  testObject.save({foo: "bar"}, {
+			  success: function(object) {
+				$(".success").show();
+			  },
+			  error: function(model, error) {
+				$(".error").show();
+			  }
+			});
+
+			</script>
+
+      <script src="scripts/app.js"></script>
+      <script src="scripts/services/services.js"></script>
+      <script src="scripts/controllers/controllers.js"></script>
+	  <!-- editor WYSIWYG para las descripciones formateadas de las incidencias -->
+      <script src="scripts/redactor/redactor.js"></script>
+      <!-- endbuild -->
+    </body>
+    </html>

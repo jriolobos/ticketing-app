@@ -1,0 +1,49 @@
+<div class="paddRow contactRow" data-ng-init="resetDefaultLevel()"> 
+  <h4>Crear incidencia</h4>
+
+  <form class="form-horizontal">
+
+      <div class="control-group">
+      <label class="control-label" for="inputDescription">Proyecto:</label>
+
+      <div class="controls"">
+		<select class="Sitedropdown" style="width: 220px;"  
+				ng-model="ticket.project" 
+				ng-options="project.id as project.name for project in projects">
+		</select> 
+	  </div>
+    </div>
+
+	<div class="control-group">
+      <label class="control-label" for="inputSummary">Resumen:</label>
+
+      <div class="controls">
+        <textarea class="ng-pristine ng-valid submitted" type="text" style="width: 240px;" id="inputSummary" ng-model="ticket.summary" placeholder="Resumen" required/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Texto descriptivo:</label>
+
+      <div class="controls">
+		<textarea wysiwyg ng-model="ticket.description" cols="18" required></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputDescription">Prioridad:</label>
+
+      <div class="controls"">
+		<select class="Sitedropdown" style="width: 220px;"  
+				ng-model="ticket.level" 
+				ng-options="level.id as level.name for level in levels">
+		</select> 
+	  </div>
+    </div>
+	<hr />
+    <div class="control-group">
+      <div class="controls">
+        <a ng-click="cancel()" class="btn btn-small btn-danger">cancelar</a>
+        <a ng-click="createNewTicket()" class="btn btn-small btn-primary">crear incidencia</a>
+      </div>
+    </div>
+  </form>
+</div>
