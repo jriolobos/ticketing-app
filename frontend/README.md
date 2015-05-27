@@ -3,8 +3,9 @@
 ## Prerequisites
 
 - [node.js](http://nodejs.org/download/)
+- [npm](https://www.npmjs.com/)
 - [grunt-cli](http://gruntjs.com/getting-started)
-- [karma-cli] npm install -g karma-cli
+- [karma-cli](https://www.npmjs.com/package/karma-cli) Instalación: npm install -g karma-cli
 
 ## npm install
 
