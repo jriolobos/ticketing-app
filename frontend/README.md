@@ -20,6 +20,7 @@ npm install
 ## Usage
 
 ``` sh
+npm test
 grunt test
 grunt server
 ```
