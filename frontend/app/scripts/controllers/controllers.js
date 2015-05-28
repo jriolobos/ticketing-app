@@ -127,8 +127,8 @@ function () {
 /**
   Controlador para crear incidencia, borrar incidencia, y listar las incidencias.
  */ 
-app.controller('TicketListCtrl', ['$scope', 'TicketsFactory', 'TicketFactory', '$location',
-  function ($scope, TicketsFactory, TicketFactory, $location) {
+app.controller('TicketListCtrl', ['$scope', '$route', '$timeout', 'TicketsFactory', 'TicketFactory', '$location',
+  function ($scope, $route, $timeout, TicketsFactory, TicketFactory, $location) {
 
     /* callback for ng-click 'editTicket': */
     $scope.editTicket = function (ticketId) {
@@ -148,13 +148,14 @@ app.controller('TicketListCtrl', ['$scope', 'TicketsFactory', 'TicketFactory', '
     };
 
     $scope.tickets = TicketsFactory.query();
-  }]);
+	
+}]);
 
 /**
   Controlador para consultar el detalle y actualizar los datos de una incidencia.
  */ 
-app.controller('TicketDetailCtrl', ['$scope', '$route', '$routeParams', 'TicketFactory', '$location',
-  function ($scope, $route, $routeParams, TicketFactory, $location) {
+app.controller('TicketDetailCtrl', ['$scope', '$route', '$timeout', '$routeParams', 'TicketFactory', '$location',
+  function ($scope, $route, $timeout, $routeParams, TicketFactory, $location) {
 
     /* callback for ng-click 'updateTicket': */
     $scope.updateTicket = function () {
@@ -186,12 +187,14 @@ app.controller('TicketDetailCtrl', ['$scope', '$route', '$routeParams', 'TicketF
 	
 	$scope.ticket = TicketFactory.show({id: $routeParams.id});
   }]);
+  
+  
 
 /**
   Controlador de creación de incidencia.
 */ 
-app.controller('TicketCreationCtrl', ['$scope', 'TicketsFactory', '$location',
-  function ($scope, TicketsFactory, $location) {
+app.controller('TicketCreationCtrl', ['$scope', '$route', '$timeout', 'TicketsFactory', '$location',
+  function ($scope, $route, $timeout, TicketsFactory, $location) {
 
     /* callback for ng-click 'createNewTicket': */
     $scope.createNewTicket = function () {
@@ -207,5 +210,4 @@ app.controller('TicketCreationCtrl', ['$scope', 'TicketsFactory', '$location',
     $scope.cancel = function () {
       $location.path('/ticket-list');
     };
-
   }]);

@@ -7,10 +7,10 @@
 var services = angular.module('ticketingApp.services', ['ngResource']);
 
 // Servicio REST de incidencias público.
-//var baseUrl = 'http://actionvera.no-ip.info\\:8080';
+// var baseUrl = 'http://actionvera.no-ip.info\\:8080';
 
 // Servicio REST de incidencias local.
-var baseUrl = 'http://192.168.1.2\\:8080';
+var baseUrl = 'http://localhost\\:8080';
 
 services.factory('TicketsFactory', function ($resource) {
     return $resource(baseUrl + '/ticketing/web/tickets', {}, {
