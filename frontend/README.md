@@ -5,8 +5,8 @@
 - [node.js](http://nodejs.org/download/)
 - [npm](https://www.npmjs.com/)
 - [bower](http://bower.io/)
-- [grunt-cli](http://gruntjs.com/getting-started)
-- [karma-cli](https://www.npmjs.com/package/karma-cli) Instalación: npm install -g karma-cli
+- [grunt](http://gruntjs.com/getting-started)
+- [karma](https://www.npmjs.com/)
 
 ## npm install
 
