@@ -22,7 +22,7 @@ npm install
 
 bower install
 
-...instala los componentes necesarios en la app
+...instala los componentes necesarios en la app (bootstrap, jquery, json, etc...)
 
 ## Usage
 

@@ -181,7 +181,6 @@ function TicketRepository() {
 	};
 
 	this.deleteTicket = function(id) {
-    // sorry, i'm tired and don't know javascript that well...
     var indexToDelete = -1;
     for (var i = 0; i < this.tickets.length; i++) {
       var tickets = this.tickets[i];
@@ -201,31 +200,31 @@ function TicketRepository() {
 /**
 	Tests en consola
  */
-console.log('PrintLine Testing... :-(');
+console.log('Test básicos en consola... :-(');
 
 // crear tickets prueba
 var testTicketRepository = new TicketRepository();
 var tickets = testTicketRepository.createTickets();
-console.log('testCreateTickets: number of initial tickets: ' + tickets.length);
+console.log('testCreateTickets: número inicial de tickets: ' + tickets.length);
 
 // crear nuevo ticket
-var ticket = new Ticket(1,'Resumen','Descripcion','Proyecto');
+var ticket = new Ticket(1,'Resumen','Descripción','Proyecto');
 var newTicket = testTicketRepository.addNewTicket(ticket);
-console.log('testAddNewTicket: new ticket: id=' + newTicket.id + ' summary:' + newTicket.summary + ' descripcion:' + newTicket.description);
-console.log('testAddNewTicket: number of ticket (after adding a ticket): ' + testTicketRepository.getNumberOfTickets());
+console.log('testAddNewTicket: nuevo ticket: id=' + newTicket.id + ' resumen:' + newTicket.summary + ' descripción:' + newTicket.description);
+console.log('testAddNewTicket: número de tickets (después de añadir ticket): ' + testTicketRepository.getNumberOfTickets());
 
 // modificar ticket
 ticket.summary = 'Modificado';
 var changedTicket = testTicketRepository.changeTicket(1, ticket);
-console.log('testChangeTicket: changed ticket: id=' + changedTicket.id + ' summary:' + changedTicket.summary + ' description:' + changedTicket.description);
+console.log('testChangeTicket: ticket modificado: id=' + changedTicket.id + ' resumen:' + changedTicket.summary + ' descripción:' + changedTicket.description);
 var u = testTicketRepository.getById(1);
-console.log('testChangeTicket: ticket: id=' + u.id + ' summary:' + u.summary + ' description:' + u.description);
-console.log('testChangeTicket: number of tickets (after changing a ticket): ' + testTicketRepository.getNumberOfTickets());
+console.log('testChangeTicket: ticket: id=' + u.id + ' resumen:' + u.summary + ' descripción:' + u.description);
+console.log('testChangeTicket: numero de tickets (después de cambiar ticket): ' + testTicketRepository.getNumberOfTickets());
 
 // borrar ticket
 testTicketRepository.deleteTicket(1);
-console.log('testDeleteTicket: number of tickets (after deleting a ticket): ' + ticketRepository.getNumberOfTickets());
+console.log('testDeleteTicket: numero de tickets (después de borrar ticket): ' + ticketRepository.getNumberOfTickets());
 
 // listar tickets
 var allTickets = ticketRepository.getAll();
-console.log('testGetAll: size of array: ' + allTickets.length);
+console.log('testGetAll: número de tickets: ' + allTickets.length);
