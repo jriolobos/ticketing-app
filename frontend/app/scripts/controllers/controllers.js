@@ -6,7 +6,7 @@
 
 var app = angular.module('ticketingApp.controllers', []);
 
-// Clear browser cache (in development mode)
+// limpieza del cache del navegador (en modo desarrollo)
 // http://stackoverflow.com/questions/14718826/angularjs-disable-partial-caching-on-dev-machine
 app.run(function($rootScope, $templateCache) {
     $rootScope.$on('$routeChangeStart', function(event, next, current) {
