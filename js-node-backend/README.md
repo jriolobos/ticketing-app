@@ -20,10 +20,3 @@ Try the following URLs:
 ```
 http://localhost:8080/ticketing/web/tickets
 ```
-
-TODO: 
-
-- Write curl commands for PUT and DELETE...
-- tests
-- cleanup
-- ...
